@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title> sign up</title>
+<link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+         
+           $("#myModal").modal({
+           backdrop: "static"   
+           });
+           $("#myModal").modal('show');
+        });
+        
+        $(document).ready(function(){
+            $(function(){
+             $("email1").hide();
+             $("password1").hide();
+            $("#email").focusout(function(){
+             check_email();
+             });
+             $("#password").focusout(function(){
+                 check_password();
+             });
+             function check_email(){
+              var error_email;
+                 var pattern= new RegExp(/^[+a-zA-Z0-9]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i);
+               if(pattern.test($("#email").val()))
+               {
+                   $("#email1").hide();
+                }
+                else if($("#email").val()===""){
+                    $("#email1").html("this is required");
+                   $("#email1").show();
+                    error_email=true;
+                }
+             
+             else{
+                   $("#email1").html("invalid email address");
+                   $("#email1").show();
+                    error_email=true;
+                     
+               }
+             }
+             function check_password(){
+                 var error_password;
+                 var password= $("#password").val().length;
+                  if($("#password").val()===""){
+                    $("#password1").html("this is required");
+                   $("#password1").show();
+                 return error_password=true;
+                }
+               else  if(password<5|| password>20){
+                     $("#password1").html("should have password between 5-20 characters");
+                     $("#password1").show();
+                   return error_password= true;
+                 }
+                 
+                 else{
+                     $("#password1").hide();
+                 }
+             }
+             $("#register").submit(function(){ 
+                 var error_email=false;
+            var error_password=false;
+             check_email();
+              check_password();
+              if( error_email===false && error_password===false ){
+                  
+                  return true;
+                }
+                else{
+               
+               return false;
+            }   
+            
+             
+            }) ;   
+        });
+          $("#showhide").click(function(){
+              if($(this).data("val") ==="1"){
+                  $("#password").prop("type","text");
+                  $("#eye").attr("class","glyphicon glyphicon-eye-close");
+                  $(this).data("val","0");
+              }   
+              else
+              {
+                  $("#password").prop("type","password");
+                  $("#eye").attr("class","glyphicon glyphicon-eye-open");
+                  $(this).data("val","1");
+              }
+             });
+           
+    });
+       
+     
+</script>
+<style>
+   
+    .modal-header {
+        background-image: url(images.jpg);
+        
+    }
+    
+    .modal-title{
+        text-align: center;
+        color:yellow;
+        text-transform: uppercase;
+        width: 300px;
+       font-weight:bold;
+       font-size:25px;
+      
+    }
+    .modal-body {
+      background-color: black;
+      color: orange;
+    }
+    #20{
+      background-image: url(down.jpg);
+      background-repeat: repeat-y;
+      background-position: right;
+    }
+    span{
+        color:red;
+        font-size: 10px;
+        
+    }
+    a:link {
+        color: orangered;
+        text-decoration: underline;
+        
+    }
+     a:visited {
+        color:red;
+        
+    }
+    a:hover {
+      color: pink; 
+    
+    }
+    a:active {
+      color: blue; 
+    
+    }
+   
+    .btn{
+       background-color: orange; 
+       color:white;
+    }
+     .btn:visited {
+        color:pink;
+     }
+    .btn:hover {
+      background-color: red; 
+    
+    }
+    .btn:active {
+      color:pink; 
+    
+    }
+    .modal-footer{
+         background-image: url(images1.jpg);
+    }
+    .input-group-btn:last-child>.btn, .input-group-btn:last-child>.btn-group {
+    z-index: 2;
+    margin-left: -15px;
+}
+</style>
+
+</head>
+<body>
+  <div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+       <div class="modal-header">
+           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+           <center><h5 class="modal-title">login</h5></center>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-offset-2">
+                        <div class="col-xs-10" >   
+                <form id="register" action="" method='post'>
+             <div class="form-group">
+              <label> Email</label>
+                 <input type="text" class="form-control" name="email" id="email">
+                  <span  id="email1"></span>
+                    </div>
+                       
+                    <div class="form-group">
+                       <label> Password</label>
+                       <div class="row">
+                        <div class="col-xs-10" >  
+                       <input type="password" class="form-control" name="password" id="password">
+                     <span  id="password1"></span> </div>
+                   <div class="col-xs-2">  
+                     <span class=" input-group-btn">
+                   <button type="button" class="btn btn-default btn-block" id="showhide" data-val="1">
+                   <span id="eye" class="glyphicon glyphicon-eye-open"></span></button>
+                   </span>
+                    </div> 
+                       </div>  
+                    </div>
+                       <center>
+                    <button type="submit" class="btn btn-primary btn-block">login</button>
+                       </center> <br/>
+                    <div class="checkbox">
+                 <label><input type="checkbox">Remember me</label>
+                       </div>
+                        
+                        <a href="#"> forget your password</a>
+                           </form>
+                    </div>
+                <div class="col-xs-6" id="20">
+                    
+                </div>
+                </div>
+                </div>
+                       <div class="modal-footer">
+                    <p style="color:pink;"> haven't sign up?<p>
+                        <a href="newhtml2.html">Signup</a>
+                    </div>
+                    
+            </div>
+            
+        </div>
+    </div>
+</div>
+</body>
+</html>                                		

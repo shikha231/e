@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    
+    </head>
+    <body>
+       <nav class= "navbar navbar-inverse">
+      <div class="container-fluid">
+     <div class="navbar-header"> 
+     <a class="navbar-brand" href="#">Grab your book... </a>
+      </div>
+       <p class="navbar-text active" style="color:white;"> bookmate</p>
+       <ul class=" nav navbar-nav navbar-right">
+        <li> <a href="newhtml1.html">
+                <span class="glyphicon glyphicon-user">login</span></a></li>
+        <li>  <a href="newhtml2.html">
+                <span class="glyphicon glyphicon-user">sign-up</span></a></li>
+        </ul>
+        </div>
+       </nav>
+        
+    </body>
+</html>
+var name=$("#name").val();
+             var email=$("#email").val(); 
+             var password=$("#password").val();
+              var tel=$("#no").val();
+              if(name===""){
+                  document.getElementById("name1").innerHTML="name is required <br>";
+                    //redirect=false;
+              }
+           if(email===""){
+                  document.getelementBYid("email1").innerhtml="email is required<br>";
+                          redirect=false;
+              }
+               if(password===""){
+                  document.getelementBYid("password1").innerhtml="password is required<br>";
+                          redirect=false;
+              }
+               if(tel===""){
+                  document.getelementBYid("tel1").innerhtml="tel is required<br>";
+                          redirect=false;
+              }
+              if(name!==""&&email!==""&&password!==""&&tel!==""){
+               document.getelementid("name1").innerhtml= "";
+               document.getelementid("email1").innerhtml= "";
+               document.getelementid("password1").innerhtml= "";
+               document.getelementid("tel1").innerhtml= "";
+           
+        alert("form is validated");
+        return true;
+              }
+
+        }    });
+            });
+ $("#showhide").click(function(){
+              if($(this).data("val")==="1"){
+                  $("#password").prop("type","text");
+                  $("#eye").attr("class","glyphicon glyphicon-eye-close");
+                  $(this).data("val","0");
+              }   
+              else{
+                  $("password").prop("type","password");
+                  $("eye").attr("class","glyphicon glyphicon-eye-open");
+                  $(this).data("val","1");
+              }
+             });
+            
+    });

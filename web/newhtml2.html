@@ -20,7 +20,7 @@
            $("#myModal").modal('show');
        });
       $(document).ready(function(){
-        $(function (){
+        // $(function (){
             $("name1").hide();
              $("email1").hide();
               $("password1").hide();
@@ -32,18 +32,45 @@
             
              $("#name").focusout(function(){
                  check_name();
+                 console.log(error_name);
+                 if(error_name!=false){
+                     $("#btn").attr('disabled',true);
+                 }
+                 else{
+                     $("#btn").attr('disabled',false);
+                 }   
              });
              $("#email").focusout(function(){
                  check_email();
+                 if(error_email!=false){
+                     $("#btn").attr('disabled',true);
+                 } 
+                 else{
+                     $("#btn").attr('disabled',false);
+                 }  
              });
              $("#password").focusout(function(){
                  check_password();
+                 if(error_password!=false){
+                     $("#btn").attr('disabled',true);
+                 } 
+                 else{
+                     $("#btn").attr('disabled',false);
+                 }
              });
              $("#tel").focusout(function(){
                  check_tel();
+                 if(error_tel!=false){
+                     $("#btn").attr('disabled',true);
+                 } 
+                 else{
+                     $("#btn").attr('disabled',false);
+                 }  
              });
+
+
              function check_name(){
-                 var error_name;
+                //  var error_name;
                  var name= $("#name").val().length;
                   var name1= $("#name").val();
                   
@@ -61,16 +88,18 @@
                  
                
                  else{
+                     error_name= false;
                      $("#name1").hide();
                  }
              }
             
        function check_email(){
-             var error_email;
+            //  var error_email;
                  var pattern= new RegExp(/^[+a-zA-Z0-9]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i);
                if(pattern.test($("#email").val()))
                {
                    $("#email1").hide();
+                   error_email = false;
                 }
                 else if($("#email").val()===""){
                     $("#email1").html("this is required");
@@ -86,7 +115,7 @@
                }
              }
              function check_password(){
-                var error_password;
+                // var error_password;
                  var password= $("#password").val().length;
                   if($("#password").val()===""){
                     $("#password1").html("this is required");
@@ -100,15 +129,17 @@
                  }
                  
                  else{
+                     error_password= false;
                      $("#password1").hide();
                  }
              }
              
             function check_tel(){
-               var error_tel;
+            //    var error_tel;
                  var tel= new RegExp(/^[0-9]+$/i);
                 if(tel.test($("#tel").val()))
                  {
+                      error_tel = false;
                   $("#tel1").hide();
                 }
                 else if ($("#tel").val()===""){
@@ -126,22 +157,23 @@
           
        $("#register").submit(function(){ 
                 
-            var error_name=false;
-            var error_email=false;
-            var error_password=false;
-            var error_tel=false;
+            // var error_name=false;
+            // var error_email=false;
+            // var error_password=false;
+            // var error_tel=false;
             check_name();
              check_email();
             check_password();
             check_tel();
-       if(error_name===false && error_email===false && error_password===false && error_tel===false){
+       if(error_name==false && error_email==false && error_password==false && error_tel==false){
               return true;
                 }
-        else{
-                     return false;
+        else{ 
+                
+                 return false;
                  }   
              });
-        });
+        // });
             
         
         $("#showhide").click(function(){
